@@ -1,0 +1,8 @@
+language: php
+install:
+   - composer update
+php:
+  - '5.6'
+  - '7.0'
+  - hhvm
+  - nightly
