@@ -3,6 +3,9 @@
 namespace Lisennk\LaravelSlackEventsApi;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Request;
+use Lisennk\LaravelSlackEvents\EventCreator;
+use Illuminate\Support\Facades\Event;
 
 class SlackApiServiceProvider extends ServiceProvider
 {
@@ -11,12 +14,22 @@ class SlackApiServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Request $request, EventCreator $events)
     {
-        $this->publishes([
-            dirname(dirname(__FILE__)).'/config/slack.php' => config_path('slack.php'),
-        ]);
+        $event = $events->make($request->input('event.type'));
+
+        $event->api_app_id = $request->input('api_app_id');
+        $event->event = (object) $request->input('event');
+        $event->authed_users = (array) $request->input('authed_users');
+        $event->event_ts = $request->input('event_ts');
+        $event->team_id = $request->input('team_id');
+        $event->token = $request->input('token');
+        $event->type = $request->input('type');
+        $event->user = $request->input('user');
+
+        Event::fire($event);
     }
+
     /**
      * Register the application services.
      *
@@ -24,8 +37,6 @@ class SlackApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(SlackApi::class, function ($app) {
-            return new SlackApi(config('slack.token'));
-        });
+        //
     }
 }

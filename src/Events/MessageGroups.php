@@ -10,7 +10,7 @@ use Lisennk\LaravelSlackEvents\Events\Base\SlackEvent;
  * @see https://api.slack.com/events
  * @package Lisennk\LaravelSlackEvents\Events
  */
-class Message.channels extends SlackEvent
+class MessageGroups extends SlackEvent
 {
     //
 }
