@@ -1,33 +1,33 @@
 <?php
 
-namespace Lisennk\LaravelSlackEventsApi;
+namespace Lisennk\LaravelSlackEvents;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Request;
 use Lisennk\LaravelSlackEvents\EventCreator;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Route;
 
-class SlackApiServiceProvider extends ServiceProvider
+/**
+ * Class SlackApiServiceProvider
+ * @package Lisennk\LaravelSlackEventsApi
+ */
+class SlackEventsServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
      *
      * @return void
      */
-    public function boot(Request $request, EventCreator $events)
+    public function boot(Request $request)
     {
-        $event = $events->make($request->input('event.type'));
+        $this->publishes([
+            dirname(__FILE__).'/config/slackEvents.php' => config_path('slackEvents.php'),
+        ]);
 
-        $event->api_app_id = $request->input('api_app_id');
-        $event->event = (object) $request->input('event');
-        $event->authed_users = (array) $request->input('authed_users');
-        $event->event_ts = $request->input('event_ts');
-        $event->team_id = $request->input('team_id');
-        $event->token = $request->input('token');
-        $event->type = $request->input('type');
-        $event->user = $request->input('user');
-
-        Event::fire($event);
+        if (!$this->app->routesAreCached()) {
+            require dirname(__FILE__).'/Http/routes.php';
+        }
     }
 
     /**
