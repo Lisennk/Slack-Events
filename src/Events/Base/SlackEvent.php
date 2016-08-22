@@ -47,18 +47,28 @@ class SlackEvent
     public $authed_users;
 
     /**
-     * Sets parameters from current request
+     * Sets parameters from request
      *
      * @param Request $request
      */
     public function setFromRequest(Request $request)
     {
-        $this->api_app_id = $request->input('api_app_id');
-        $this->event = (array) $request->input('event');
-        $this->authed_users = (array) $request->input('authed_users');
-        $this->event_ts = $request->input('event_ts');
-        $this->team_id = $request->input('team_id');
-        $this->token = $request->input('token');
-        $this->type = $request->input('type');
+        $this->setFromArray($request->toArray());
+    }
+
+    /**
+     * Sets parameters from array
+     *
+     * @param array $data
+     */
+    public function setFromArray(array $data)
+    {
+        $this->api_app_id = $data['api_app_id'];
+        $this->event = $data['event'];
+        $this->authed_users = $data['authed_users'];
+        $this->event_ts = $data['event_ts'];
+        $this->team_id = $data['team_id'];
+        $this->token = $data['token'];
+        $this->type = $data['type'];
     }
 }
