@@ -57,7 +57,7 @@ class SlackEvent
     }
 
     /**
-     * Sets parameters from array
+     * Sets parameters from arrau
      *
      * @param array $data
      */
