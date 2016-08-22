@@ -1,6 +1,7 @@
 <?php
 
 namespace Lisennk\LaravelSlackEvents\Events\Base;
+use Illuminate\Http\Request;
 
 /**
  * Slack Events API event
@@ -19,11 +20,6 @@ class SlackEvent
      * @var string The unique identifier for the team where this event occurred.
      */
     public $team_id;
-
-    /**
-     * @var string The unique identifier of user that triggered event
-     */
-    public $user;
 
     /**
      * @var string 	The unique identifier for the application this event is intended for.
@@ -49,4 +45,20 @@ class SlackEvent
      * @var array An array of string-based User IDs.
      */
     public $authed_users;
+
+    /**
+     * Sets parameters from current request
+     *
+     * @param Request $request
+     */
+    public function setFromRequest(Request $request)
+    {
+        $this->api_app_id = $request->input('api_app_id');
+        $this->event = (array) $request->input('event');
+        $this->authed_users = (array) $request->input('authed_users');
+        $this->event_ts = $request->input('event_ts');
+        $this->team_id = $request->input('team_id');
+        $this->token = $request->input('token');
+        $this->type = $request->input('type');
+    }
 }

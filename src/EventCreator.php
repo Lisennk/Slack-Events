@@ -53,6 +53,11 @@ use Lisennk\LaravelSlackEvents\Events\TeamRename;
 use Lisennk\LaravelSlackEvents\Events\UrlVerification;
 use Lisennk\LaravelSlackEvents\Events\UserChange;
 
+/**
+ * Event factory
+ *
+ * @package Lisennk\LaravelSlackEvents
+ */
 class EventCreator
 {
     /**
@@ -118,6 +123,6 @@ class EventCreator
      */
     public function make($eventType)
     {
-        return new $this->map($eventType);
+        return new $this->map[$eventType];
     }
 }
