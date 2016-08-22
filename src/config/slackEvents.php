@@ -3,14 +3,14 @@
 return [
     /*
     |-------------------------------------------------------------
-    | Your validation token
+    | Your validation token from "App Credentials"
     |-------------------------------------------------------------
     */
     'token' => 'your-validation-token-here',
 
     /*
     |-------------------------------------------------------------
-    | Your route
+    | Events Request URL — path, where events will be served
     |-------------------------------------------------------------
     */
     'route' => '/api/slack/event/fire',
