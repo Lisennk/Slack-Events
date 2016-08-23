@@ -1,8 +1,8 @@
 # :bell: Slack Events API for Laravel :bell:
-[![Latest Stable Version](https://poser.pugx.org/lisennk/laravel-slack-web-api/v/stable)](https://packagist.org/packages/lisennk/laravel-slack-web-api)
-[![Total Downloads](https://poser.pugx.org/lisennk/laravel-slack-web-api/downloads)](https://packagist.org/packages/lisennk/laravel-slack-web-api)
-[![License](https://poser.pugx.org/lisennk/laravel-slack-web-api/license)](https://packagist.org/packages/lisennk/laravel-slack-web-api)
-[![Build Status](https://travis-ci.org/Lisennk/Laravel-Slack-Web-API.svg?branch=master)](https://travis-ci.org/Lisennk/Laravel-Slack-Web-API)
+[![Latest Stable Version](https://poser.pugx.org/lisennk/laravel-slack-events-api/v/stable)](https://packagist.org/packages/lisennk/laravel-slack-events-api)
+[![Total Downloads](https://poser.pugx.org/lisennk/laravel-slack-events-api/downloads)](https://packagist.org/packages/lisennk/laravel-slack-events-api)
+[![License](https://poser.pugx.org/lisennk/laravel-slack-events-api/license)](https://packagist.org/packages/lisennk/laravel-slack-events-api)
+[![Build Status](https://travis-ci.org/Lisennk/Slack-Events.svg?branch=1.0.0)](https://travis-ci.org/Lisennk/Slack-Events)
 
 *Work with Slack Events API as simple, as with native Laravel events and event listeners.*
 
