@@ -37,11 +37,6 @@ class SlackEvent
     public $type;
 
     /**
-     * @var string The timestamp of the event.
-     */
-    public $event_ts;
-
-    /**
      * @var array An array of string-based User IDs.
      */
     public $authed_users;
@@ -66,7 +61,6 @@ class SlackEvent
         $this->api_app_id = $data['api_app_id'];
         $this->event = $data['event'];
         $this->authed_users = $data['authed_users'];
-        $this->event_ts = $data['event_ts'];
         $this->team_id = $data['team_id'];
         $this->token = $data['token'];
         $this->type = $data['type'];
