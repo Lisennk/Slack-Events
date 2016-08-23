@@ -82,7 +82,7 @@ https://[your-site-url]/api/slack/event/fire
 
 **Also see [Quick Example](#example)**.
 
-Thanks to this package, working with [Slack Events]((https://api.slack.com/events-api) is the same as working with [Laravel Events](https://laravel.com/docs/master/events). So if you haven't read the [Laravel Events documentation](https://laravel.com/docs/master/events) or [Slack Events API documentation]((https://api.slack.com/events-api) yet, it's **highly recommended** to read it before you start.
+Thanks to this package, working with [Slack Events](https://api.slack.com/events-api) is the same as working with [Laravel Events](https://laravel.com/docs/master/events). So if you haven't read the [Laravel Events documentation](https://laravel.com/docs/master/events) or [Slack Events API documentation](https://api.slack.com/events-api) yet, it's **highly recommended** to read them before you start.
 
 This package provides a separate Laravel Event class for [every event](https://api.slack.com/events) that has Slack Events API support. For example, the `reaction_added` event implementation is the `Lisennk\LaravelSlackEvents\Events\ReactionAdded` class.
 
