@@ -1,45 +1,27 @@
 <?php
 
+namespace Lisennk\LaravelSlackEvents\Tests;
+
+use Illuminate\Http\Response;
 use Orchestra\Testbench\TestCase;
+use Lisennk\LaravelSlackEvents\Tests\Traits\EventRequestDataTrait;
 use Illuminate\Http\Request;
 use \Lisennk\LaravelSlackEvents\Http\EventMiddleware;
 use \Lisennk\LaravelSlackEvents\SlackEventsServiceProvider;
 
 /**
- * Class SlackEventsTest
+ * Tests EventMiddleware
  */
 class MiddlewareTest extends TestCase
 {
-    /**
-     * @var array example of slack event request, can be used also for integration testing
-     */
-    public $data = [
-        'token' => 'your-validation-token-here',
-        'team_id' => 'team-id',
-        'api_app_id' => 'app-id',
-        'event' => [
-            'type' => 'reaction_added',
-            'user' => 'user-id',
-            'item' => [
-                'type' => 'message',
-                'channel' => 'channel-id',
-                'ts' => '1464196127.000002'
-            ],
-            'reaction' => 'slightly_smiling_face'
-        ],
-        'event_ts' => '1465244570.336841',
-        'type' => 'event_callback',
-        'authed_users'=> [
-            'U061F7AUR'
-        ]
-    ];
+    use EventRequestDataTrait;
 
     /**
      * Test for wrong token check
      */
     public function testWrongToken()
     {
-        $data = array_merge($this->data, [
+        $data = array_merge($this->eventRequestData, [
             'token' => 'wrong-token'
         ]);
 
@@ -49,6 +31,7 @@ class MiddlewareTest extends TestCase
         $middleware = new EventMiddleware;
         $response = $middleware->handle($request, function($response) {});
 
+        $this->assertTrue($response instanceof Response);
         $this->assertEquals(200, $response->status());
         $this->assertEquals('Wrong token', $response->content());
     }
@@ -59,7 +42,7 @@ class MiddlewareTest extends TestCase
     public function testMiddlewarePass()
     {
         $request = new Request();
-        $request->replace($this->data);
+        $request->replace($this->eventRequestData);
         $middleware = new EventMiddleware;
 
         $response = $middleware->handle($request, function($request) {
@@ -73,7 +56,7 @@ class MiddlewareTest extends TestCase
     public function testUrlVerification()
     {
         $data = [
-            'token' => $this->data['token'],
+            'token' => $this->eventRequestData['token'],
             'challenge' => 'challenge-code',
             'type' => 'url_verification'
         ];
@@ -84,6 +67,7 @@ class MiddlewareTest extends TestCase
         $middleware = new EventMiddleware;
         $response = $middleware->handle($request, function($response) {});
 
+        $this->assertTrue($response instanceof Response);
         $this->assertEquals(200, $response->status());
         $this->assertEquals($data['challenge'], $response->content());
     }
@@ -106,6 +90,6 @@ class MiddlewareTest extends TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('slackEvents.token', $this->data['token']);
+        $app['config']->set('slackEvents.token', $this->eventRequestData['token']);
     }
 }

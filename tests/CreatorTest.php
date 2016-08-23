@@ -1,38 +1,20 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+namespace Lisennk\LaravelSlackEvents\Tests;
+
+use Orchestra\Testbench\TestCase;
+use Lisennk\LaravelSlackEvents\Tests\Traits\EventRequestDataTrait;
 use \Lisennk\LaravelSlackEvents\EventCreator;
 use \Lisennk\LaravelSlackEvents\Events\ReactionAdded;
 use \Lisennk\LaravelSlackEvents\Events\ChannelCreated;
+use \Illuminate\Http\Request;
 
 /**
- * Class SlackEventsTest
+ * Tests EventCreator
  */
 class SlackEventsTest extends TestCase
 {
-    /**
-     * @var array example of slack event request, can be used also for integration testing
-     */
-    public $data = [
-        'token' => 'your-validation-token-here',
-        'team_id' => 'team-id',
-        'api_app_id' => 'app-id',
-        'event' => [
-            'type' => 'reaction_added',
-            'user' => 'user-id',
-            'item' => [
-                'type' => 'message',
-                'channel' => 'channel-id',
-                'ts' => '1464196127.000002'
-            ],
-            'reaction' => 'slightly_smiling_face'
-        ],
-        'event_ts' => '1465244570.336841',
-        'type' => 'event_callback',
-        'authed_users'=> [
-                'U061F7AUR'
-        ]
-    ];
+    use EventRequestDataTrait;
 
     /**
      * Test for proper event class from event type creation
@@ -57,20 +39,39 @@ class SlackEventsTest extends TestCase
     }
 
     /**
-     * Test for parameters passing
+     * Test for parameters passing from array
      */
     public function testSetFromArray()
     {
-        $data = array_merge($this->data, [
+        $data = array_merge($this->eventRequestData, [
             'token' => 'some-custom-token'
         ]);
 
         $events = new EventCreator();
-        $event = $events->make($this->data['event']['type']);
+        $event = $events->make($this->eventRequestData['event']['type']);
         $event->setFromArray($data);
 
         $this->assertEquals($data['token'], $event->token);
         $this->assertEquals($data['event'], $event->event);
     }
 
+    /**
+     * Test for parameters passing from http request
+     */
+    public function testSetFromRequest()
+    {
+        $data = array_merge($this->eventRequestData, [
+            'token' => 'some-custom-token'
+        ]);
+
+        $request = new Request;
+        $request->replace($data);
+
+        $events = new EventCreator();
+        $event = $events->make($this->eventRequestData['event']['type']);
+        $event->setFromRequest($request);
+
+        $this->assertEquals($data['token'], $event->token);
+        $this->assertEquals($data['event'], $event->event);
+    }
 }
