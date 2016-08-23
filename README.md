@@ -78,6 +78,10 @@ https://[your-site-url]/api/slack/event/fire
 ```
 ![request_url](https://cloud.githubusercontent.com/assets/8103985/17905448/b8ed582a-697b-11e6-890d-e0c1bcff0bd7.png)
 
+## :hibiscus: Contributing
+
+Feel free to star this repository, create pull requests, issues and report typos.
+
 ## :books: Reference 
 * Read [Slack Events API official documentation](https://api.slack.com/events-api);
 * Read [Laravel Events documentation](https://laravel.com/docs/master/events);
