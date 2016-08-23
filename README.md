@@ -80,7 +80,9 @@ https://[your-site-url]/api/slack/event/fire
 
 ## :fork_and_knife: Usage
 
-Thanks to this package, work with [Slack Events]((https://api.slack.com/events-api) is actually work with [Laravel Events](https://laravel.com/docs/master/events). So if you didn't read [Laravel Events documentation](https://laravel.com/docs/master/events) or [Slack Events API documentation]((https://api.slack.com/events-api) yet, its highly recommended to read it before start.
+**Also see [Quick Example](#example)**.
+
+Thanks to this package, work with [Slack Events]((https://api.slack.com/events-api) is actually work with [Laravel Events](https://laravel.com/docs/master/events). So if you didn't read [Laravel Events documentation](https://laravel.com/docs/master/events) or [Slack Events API documentation]((https://api.slack.com/events-api) yet, its **highly recommended** to read it before start.
 
 This package prodvides seperate Laravel Event class for [every event](https://api.slack.com/events), that have Slack Events API support. For example, `reaction_added` event implementation is `Lisennk\LaravelSlackEvents\Events\ReactionAdded` class.
 
@@ -104,7 +106,7 @@ $reactionAdded->event->reaction; // reaction name, something like :thumbsup:
 
 So, now suppose, we want to make a `reaction_added` Slack Event listener. What we need to do?
 
-#### Example
+### Example
 
 **1)** Open `App/Listeners` directory or, if it doesn't exist, create it yourself. Now create new file, call it, for example, `ReactionAddedListener.php` and paste to it this code:
 ```php
@@ -161,6 +163,60 @@ protected $listen = [
 ```
 
 **3)** Profit! You are ready to go. 
+
+## :cherries: Full list of supported events and their classes
+
+| [Event Name](https://api.slack.com/events) | [Event Class](https://github.com/Lisennk/Slack-Events/tree/master/src/Events)                    |
+|------------|:-------------------------------------------------:|
+|channel_archive|\Lisennk\LaravelSlackEvents\Events\ChannelArchive|
+|channel_created|\Lisennk\LaravelSlackEvents\Events\ChannelCreated|
+|channel_deleted|\Lisennk\LaravelSlackEvents\Events\ChannelDeleted|
+|channel_history_changed|\Lisennk\LaravelSlackEvents\Events\ChannelHistoryChanged|
+|channel_joined|\Lisennk\LaravelSlackEvents\Events\ChannelJoined|
+|channel_rename|\Lisennk\LaravelSlackEvents\Events\ChannelRename|
+|channel_unarchive|\Lisennk\LaravelSlackEvents\Events\ChannelUnarchive|
+|dnd_updated|\Lisennk\LaravelSlackEvents\Events\DndUpdated|
+|dnd_updated_user|\Lisennk\LaravelSlackEvents\Events\DndUpdatedUser|
+|email_domain_changed|\Lisennk\LaravelSlackEvents\Events\EmailDomainChanged|
+|emoji_changed|\Lisennk\LaravelSlackEvents\Events\EmojiChanged|
+|file_change|\Lisennk\LaravelSlackEvents\Events\FileChange|
+|file_comment_added|\Lisennk\LaravelSlackEvents\Events\FileCommentAdded|
+|file_comment_deleted|\Lisennk\LaravelSlackEvents\Events\FileCommentDeleted|
+|file_comment_edited|\Lisennk\LaravelSlackEvents\Events\FileCommentEdited|
+|file_created|\Lisennk\LaravelSlackEvents\Events\FileCreated|
+|file_deleted|\Lisennk\LaravelSlackEvents\Events\FileDeleted|
+|file_public|\Lisennk\LaravelSlackEvents\Events\FilePublic|
+|file_shared|\Lisennk\LaravelSlackEvents\Events\FileShared|
+|file_unshared|\Lisennk\LaravelSlackEvents\Events\FileUnshared|
+|group_archive|\Lisennk\LaravelSlackEvents\Events\GroupArchive|
+|group_close|\Lisennk\LaravelSlackEvents\Events\GroupClose|
+|group_history_changed|\Lisennk\LaravelSlackEvents\Events\GroupHistoryChanged|
+|group_open|\Lisennk\LaravelSlackEvents\Events\GroupOpen|
+|group_rename|\Lisennk\LaravelSlackEvents\Events\GroupRename|
+|group_unarchive|\Lisennk\LaravelSlackEvents\Events\GroupUnarchive|
+|im_close|\Lisennk\LaravelSlackEvents\Events\ImClose|
+|im_created|\Lisennk\LaravelSlackEvents\Events\ImCreated|
+|im_history_changed|\Lisennk\LaravelSlackEvents\Events\ImHistoryChanged|
+|im_open|\Lisennk\LaravelSlackEvents\Events\ImOpen|
+|message.channels|\Lisennk\LaravelSlackEvents\Events\MessageChannels|
+|message.groups|\Lisennk\LaravelSlackEvents\Events\MessageGroups|
+|message.im|\Lisennk\LaravelSlackEvents\Events\MessageIm|
+|message.mpim|\Lisennk\LaravelSlackEvents\Events\MessageMpim|
+|pin_added|\Lisennk\LaravelSlackEvents\Events\PinAdded|
+|pin_removed|\Lisennk\LaravelSlackEvents\Events\PinRemoved|
+|reaction_added|\Lisennk\LaravelSlackEvents\Events\ReactionAdded|
+|reaction_removed|\Lisennk\LaravelSlackEvents\Events\ReactionRemoved|
+|star_added|\Lisennk\LaravelSlackEvents\Events\StarAdded|
+|star_removed|\Lisennk\LaravelSlackEvents\Events\StarRemoved|
+|subteam_created|\Lisennk\LaravelSlackEvents\Events\SubteamCreated|
+|subteam_self_added|\Lisennk\LaravelSlackEvents\Events\SubteamSelfAdded|
+|subteam_self_removed|\Lisennk\LaravelSlackEvents\Events\SubteamSelfRemoved|
+|subteam_updated|\Lisennk\LaravelSlackEvents\Events\SubteamUpdated|
+|team_domain_change|\Lisennk\LaravelSlackEvents\Events\TeamDomainChange|
+|team_join|\Lisennk\LaravelSlackEvents\Events\TeamJoin|
+|team_rename|\Lisennk\LaravelSlackEvents\Events\TeamRename|
+|url_verification|\Lisennk\LaravelSlackEvents\Events\UrlVerification|
+|user_change|\Lisennk\LaravelSlackEvents\Events\UserChange|
 
 ## :hibiscus: Contributing
 
