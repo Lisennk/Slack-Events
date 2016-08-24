@@ -4,7 +4,7 @@
 [![License](https://poser.pugx.org/lisennk/laravel-slack-events-api/license)](https://packagist.org/packages/lisennk/laravel-slack-events-api)
 [![Build Status](https://travis-ci.org/Lisennk/Slack-Events.svg?branch=1.0.0)](https://travis-ci.org/Lisennk/Slack-Events)
 
-*Work with Slack Events API as easily as with native Laravel events and event listeners.*
+*Work with Slack Events API as easily as with native Laravel 5 events and event listeners.*
 
 **:link: Reasons to use this package for the [Slack Events API](https://api.slack.com/events-api):**
 * Based on native Laravel Events
@@ -37,9 +37,7 @@ composer require lisennk/laravel-slack-events-api
 
 // ...
 ```
-If you are using Laravel 5.3, in this file also should be comment with text like `/* Package Service Providers... */`, hat can help you to detect right place.
-
-If you are using Laravel 5.3, in this file you will find a comment with text like `/* Package Service Providers... */`, which will help you to find the right place.
+If you are using Laravel 5.3, in this file you will find a comment with text like `/* Package Service Providers... */`, which can help you to find the right place.
 
 **3)** Publish the config file
 ```bash
