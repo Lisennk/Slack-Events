@@ -80,7 +80,7 @@ https://[your-site-url]/api/slack/event/fire
 
 ## :fork_and_knife: Usage
 
-**Also see [Quick Example](#example)**.
+**Also see: [Quick Example](#example)**.
 
 Thanks to this package, working with [Slack Events](https://api.slack.com/events-api) is the same as working with [Laravel Events](https://laravel.com/docs/master/events). So if you haven't read the [Laravel Events documentation](https://laravel.com/docs/master/events) or [Slack Events API documentation](https://api.slack.com/events-api) yet, it's **highly recommended** to read them before you start.
 
