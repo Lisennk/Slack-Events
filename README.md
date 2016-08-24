@@ -10,7 +10,7 @@
 * Based on native Laravel Events
 * Supports all Slack Event types
 * Supports token validation
-* Supports url verification and "challenge" requests
+* Supports URL verification and "challenge" requests
 * PSR compatible code
 * Full documentation
 * Almost full test coverage
@@ -72,7 +72,7 @@ return [
 ```
 `'route'` works just like built-in Laravel routes, so if your site URL is `https://example.com` and your `'route'` is `/api/slack/event/fire`, then your full Request URL is `https://example.com/api/slack/event/fire`. You can leave it as-is or set your own route instead of the default `/api/slack/event/fire`.
 
-This package will do all verification and challenge work for you, so you only need to set your Request URL — by default it's:
+This package will do all verification and "challenge" work for you, so you only need to set your Request URL — by default it's:
 ```
 https://[your-site-url]/api/slack/event/fire
 ```
@@ -84,7 +84,9 @@ https://[your-site-url]/api/slack/event/fire
 
 Thanks to this package, working with [Slack Events](https://api.slack.com/events-api) is the same as working with [Laravel Events](https://laravel.com/docs/master/events). So if you haven't read the [Laravel Events documentation](https://laravel.com/docs/master/events) or [Slack Events API documentation](https://api.slack.com/events-api) yet, it's **highly recommended** to read them before you start.
 
-This package provides a separate Laravel Event class for [every event](https://api.slack.com/events) that has Slack Events API support. For example, the `reaction_added` event implementation is the `Lisennk\LaravelSlackEvents\Events\ReactionAdded` class.
+This package provides a separate Laravel Event class for [every Slack event](https://api.slack.com/events) that has Slack Events API support. For example, the `reaction_added` event implementation is the `Lisennk\LaravelSlackEvents\Events\ReactionAdded` class.
+
+**Also see: [Full list of supported events and their classes](#cherries-full-list-of-supported-events-and-their-classes).**
 
 Each Event class has public fields representing the real Slack Event request:
 
@@ -97,12 +99,10 @@ Each Event class has public fields representing the real Slack Event request:
 | public $type;         | This reflects the type of callback you're receiving.                      |
 | public $authed_users; | An array of string-based User IDs.                                        |
 
-If you want to get the reaction name from [reaction_added](https://api.slack.com/events/reaction_added) event, you can get it from the `ReactionAdded` event class like this:
+For example, if you want to get the reaction name from [reaction_added](https://api.slack.com/events/reaction_added) event, you can get it from the `ReactionAdded` event class like this:
 ```php
 $reactionAdded->event->reaction; // reaction name, something like :thumbsup:
 ```
-
-**You can find a full list of supported events and their classes below.**
 
 So, suppose we want to make a `reaction_added` Slack Event listener. What do we need to do?
 
