@@ -4,7 +4,7 @@
 [![License](https://poser.pugx.org/lisennk/laravel-slack-events-api/license)](https://packagist.org/packages/lisennk/laravel-slack-events-api)
 [![Build Status](https://travis-ci.org/Lisennk/Slack-Events.svg?branch=1.0.0)](https://travis-ci.org/Lisennk/Slack-Events)
 
-*Work with Slack Events API as easily as native Laravel events and event listeners.*
+*Work with Slack Events API as easily as with native Laravel events and event listeners.*
 
 **:link: Reasons to use this package for the [Slack Events API](https://api.slack.com/events-api):**
 * Based on native Laravel Events
@@ -21,11 +21,7 @@
 ```bash
 composer require lisennk/laravel-slack-events-api
 ```
-**2)** Publish the config 
-```bash
-php artisan vendor:publish
-```
-**3)** Open `config/app.php` and add `\Lisennk\LaravelSlackEvents\SlackEventsServiceProvider::class` to the `providers[]` array.
+**2)** Open `config/app.php` and add `\Lisennk\LaravelSlackEvents\SlackEventsServiceProvider::class` to the `providers[]` array.
 
 *For example:*
 ```php
@@ -36,14 +32,23 @@ php artisan vendor:publish
 // A whole bunch of providers
 // ...
 
-\Lisennk\LaravelSlackEvents\SlackEventsServiceProvider::class
+\Lisennk\LaravelSlackEvents\SlackEventsServiceProvider::class,
 ],
 
 // ...
 ```
-**3)** Open "[My Apps](https://api.slack.com/apps)" page and go to your app control panel. You will need to configure a few things here in the next 2 steps.
+If you are using Laravel 5.3, in this file also should be comment with text like `/* Package Service Providers... */`, hat can help you to detect right place.
 
-**4)** Go to the "App Credentials" page, scroll down and copy "Verification Token".
+If you are using Laravel 5.3, in this file you will find a comment with text like `/* Package Service Providers... */`, which will help you to find the right place.
+
+**3)** Publish the config file
+```bash
+php artisan vendor:publish
+```
+
+**4)** Open "[My Apps](https://api.slack.com/apps)" page and go to your app control panel. You will need to configure a few things here in the next 2 steps.
+
+**5)** Go to the "App Credentials" page, scroll down and copy "Verification Token".
 
 <img src="https://cloud.githubusercontent.com/assets/8103985/17901937/ebdbdb3e-696d-11e6-96b4-b0794d74ed9a.png" alt="verification_token" style="height: 250px; width: auto;">
 
@@ -52,7 +57,7 @@ Open `config/slackEvents.php` and paste your Verification Token under the `'toke
 'token' => 'paste-your-token-here'
 ```
 
-**5)** Now open the "Event Subscriptions" page. Here you must enable events, add events you wish to listen for and set **Request URL**. Request URL is the `'route'` key in your `config/slackEvents.php` file:
+**6)** Now open the "Event Subscriptions" page. Here you must enable events, add events you wish to listen for and set **Request URL**. Request URL is the `'route'` key in your `config/slackEvents.php` file:
 ```php
 return [
     /*
@@ -96,6 +101,7 @@ Each Event class has public fields representing the real Slack Event request:
 | public $team_id;      | The unique identifier for the team where this event occurred.             |
 | public $api_app_id    | The unique identifier for the application this event is intended for.     |
 | public $event;        | Contains the inner set of fields representing the event that's happening. |
+| public $data          | Alias for `public $event` field. Makes code more clear if your event object name is `$event` too, so you can write `$event->data` instead of `$event->event`.                                                |
 | public $type;         | This reflects the type of callback you're receiving.                      |
 | public $authed_users; | An array of string-based User IDs.                                        |
 
