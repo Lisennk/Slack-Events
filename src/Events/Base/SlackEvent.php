@@ -32,6 +32,11 @@ class SlackEvent
     public $event;
 
     /**
+     * @var object Alias for $event
+     */
+    public $data;
+
+    /**
      * @var string This reflects the type of callback you're receiving.
      */
     public $type;
@@ -60,6 +65,7 @@ class SlackEvent
     {
         $this->api_app_id = $data['api_app_id'];
         $this->event = $data['event'];
+        $this->data = $this->event;
         $this->authed_users = $data['authed_users'];
         $this->team_id = $data['team_id'];
         $this->token = $data['token'];
