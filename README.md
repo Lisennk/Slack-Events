@@ -44,7 +44,7 @@ If you are using Laravel 5.3, in this file you will find a comment with text lik
 php artisan vendor:publish
 ```
 
-**4)** Open "[My Apps](https://api.slack.com/apps)" page and go to your app control panel. You will need to configure a few things here in the next 2 steps.
+**4)** Open in browser [api.slack.com](https://api.slack.com) site, go to "[My Apps](https://api.slack.com/apps)" page and then go to your app control panel. You will need to configure a few things here in the next 2 steps.
 
 **5)** Go to the "App Credentials" page, scroll down and copy "Verification Token".
 
