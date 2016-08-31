@@ -27,12 +27,12 @@ class SlackEvent
     public $api_app_id;
 
     /**
-     * @var object Contains the inner set of fields representing the event that's happening.
+     * @var array Contains the inner set of fields representing the event that's happening.
      */
     public $event;
 
     /**
-     * @var object Alias for $event
+     * @var array Alias for $event
      */
     public $data;
 
