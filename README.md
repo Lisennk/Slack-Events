@@ -105,7 +105,7 @@ Each Event class has public fields representing the real Slack Event request:
 
 For example, if you want to get the reaction name from [reaction_added](https://api.slack.com/events/reaction_added) event, you can get it from the `ReactionAdded` event class like this:
 ```php
-$reactionAdded->event->reaction; // reaction name, something like :thumbsup:
+$reactionAdded->event['reaction']; // reaction name, something like :thumbsup:
 ```
 
 So, suppose we want to make a `reaction_added` Slack Event listener. What do we need to do?
@@ -143,7 +143,7 @@ class ReactionAddedListener implements ShouldQueue
     public function handle(ReactionAdded $reactionAdded)
     {
         // Do some magic with event data
-        Log::info('New reaction added, reaction name is: ' . $reactionAdded->event->reaction);
+        Log::info('New reaction added, reaction name is: ' . $reactionAdded->event['reaction']);
     }
 }
 
