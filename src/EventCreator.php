@@ -33,6 +33,7 @@ use Lisennk\LaravelSlackEvents\Events\ImClose;
 use Lisennk\LaravelSlackEvents\Events\ImCreated;
 use Lisennk\LaravelSlackEvents\Events\ImHistoryChanged;
 use Lisennk\LaravelSlackEvents\Events\ImOpen;
+use Lisennk\LaravelSlackEvents\Events\Message;
 use Lisennk\LaravelSlackEvents\Events\MessageChannels;
 use Lisennk\LaravelSlackEvents\Events\MessageGroups;
 use Lisennk\LaravelSlackEvents\Events\MessageIm;
@@ -94,6 +95,7 @@ class EventCreator
         'im_created' => ImCreated::class,
         'im_history_changed' => ImHistoryChanged::class,
         'im_open' => ImOpen::class,
+        'message' => Message::class,
         'message.channels' => MessageChannels::class,
         'message.groups' => MessageGroups::class,
         'message.im' => MessageIm::class,
