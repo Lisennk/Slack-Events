@@ -1,6 +1,7 @@
 <?php
 
 namespace Lisennk\LaravelSlackEvents\Events\Base;
+
 use Illuminate\Http\Request;
 
 /**
@@ -57,7 +58,7 @@ class SlackEvent
     }
 
     /**
-     * Sets parameters from arrau
+     * Sets parameters from array
      *
      * @param array $data
      */

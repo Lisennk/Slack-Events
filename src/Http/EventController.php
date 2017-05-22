@@ -7,7 +7,6 @@ use \Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Event;
 use Lisennk\LaravelSlackEvents\EventCreator;
 use Lisennk\LaravelSlackEvents\Events\Base\SlackEvent;
-use Lisennk\LaravelSlackEvents\Http\EventMiddleware;
 
 /**
  * Class EventController

@@ -3,10 +3,9 @@
 namespace Lisennk\LaravelSlackEvents;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Http\Request;
-use Lisennk\LaravelSlackEvents\EventCreator;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application as LaravelApplication;
+use Laravel\Lumen\Application as LumenApplication;
+
 
 /**
  * Class SlackApiServiceProvider
@@ -19,14 +18,19 @@ class SlackEventsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Request $request)
+    public function boot()
     {
-        $this->publishes([
-            dirname(__FILE__).'/config/slackEvents.php' => config_path('slackEvents.php'),
-        ]);
+        $source = dirname(__DIR__).'/config/slackEvents.php';
+
+        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
+            $this->publishes([$source => config_path('slackEvents.php')]);
+        } elseif ($this->app instanceof LumenApplication) {
+            $this->app->configure('slackEvents');
+        }
+        $this->mergeConfigFrom($source, 'slackEvents');
 
         if (!$this->app->routesAreCached()) {
-            require dirname(__FILE__).'/Http/routes.php';
+            require __DIR__.'/Http/routes.php';
         }
     }
 
