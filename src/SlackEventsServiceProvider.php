@@ -28,10 +28,6 @@ class SlackEventsServiceProvider extends ServiceProvider
             $this->app->configure('slackEvents');
         }
         $this->mergeConfigFrom($source, 'slackEvents');
-
-        if (!$this->app->routesAreCached()) {
-            require __DIR__.'/Http/routes.php';
-        }
     }
 
     /**
