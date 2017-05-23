@@ -6,7 +6,7 @@ return [
     | Your validation token from "App Credentials"
     |-------------------------------------------------------------
     */
-    'token' => 'your-validation-token-here',
+    'token' => env('SLACK_EVENT_TOKEN', 'your-validation-token-here'),
 
     /*
     |-------------------------------------------------------------
