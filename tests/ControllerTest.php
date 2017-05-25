@@ -29,7 +29,7 @@ class ControllerTest extends TestCase
 
         $response = $controller->fire($request, $creator);
 
-        $this->assertTrue($response instanceof Response);
+        $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->status());
     }
 }

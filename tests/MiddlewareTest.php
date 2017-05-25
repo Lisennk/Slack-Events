@@ -31,7 +31,7 @@ class MiddlewareTest extends TestCase
         $middleware = new EventMiddleware;
         $response = $middleware->handle($request, function($response) {});
 
-        $this->assertTrue($response instanceof Response);
+        $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->status());
         $this->assertEquals('Wrong token', $response->content());
     }
@@ -45,8 +45,8 @@ class MiddlewareTest extends TestCase
         $request->replace($this->eventRequestData);
         $middleware = new EventMiddleware;
 
-        $response = $middleware->handle($request, function($request) {
-            $this->assertTrue($request instanceof Request);
+        $middleware->handle($request, function($request) {
+            $this->assertInstanceOf(Request::class, $request);
         });
     }
 
@@ -67,7 +67,7 @@ class MiddlewareTest extends TestCase
         $middleware = new EventMiddleware;
         $response = $middleware->handle($request, function($response) {});
 
-        $this->assertTrue($response instanceof Response);
+        $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->status());
         $this->assertEquals($data['challenge'], $response->content());
     }

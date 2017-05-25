@@ -24,7 +24,7 @@ class SlackEventsTest extends TestCase
         $events = new EventCreator();
 
         $event = $events->make('reaction_added');
-        $this->assertTrue($event instanceof ReactionAdded);
+        $this->assertInstanceOf(ReactionAdded::class, $event);
     }
 
     /**
@@ -35,7 +35,7 @@ class SlackEventsTest extends TestCase
         $events = new EventCreator();
 
         $event = $events->make('channel_created');
-        $this->assertTrue($event instanceof ChannelCreated);
+        $this->assertInstanceOf(ChannelCreated::class, $event);
     }
 
     /**
