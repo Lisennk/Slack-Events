@@ -49,9 +49,9 @@ php artisan vendor:publish
 
 <img src="https://cloud.githubusercontent.com/assets/8103985/17901937/ebdbdb3e-696d-11e6-96b4-b0794d74ed9a.png" alt="verification_token" style="height: 250px; width: auto;">
 
-Open `config/slackEvents.php` and paste your Verification Token under the `'token'` key:
+Open `.env` and paste your Verification Token under the `'SLACK_EVENT_TOKEN'` key:
 ```php
-'token' => 'paste-your-token-here'
+SLACK_EVENT_TOKEN=your-token
 ```
 
 **6)** Now open the "Event Subscriptions" page. Here you must enable events, add events you wish to listen for and set **Request URL**. Request URL is the `'route'` key in your `config/slackEvents.php` file:
@@ -62,7 +62,7 @@ return [
     | Your validation token from "App Credentials"
     |-------------------------------------------------------------
     */
-    'token' => 'your-validation-token-here',
+    'token' => env('SLACK_EVENT_TOKEN', 'your-validation-token-here'),
 
     /*
     |-------------------------------------------------------------

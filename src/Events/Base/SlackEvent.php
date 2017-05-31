@@ -54,7 +54,7 @@ class SlackEvent
      */
     public function setFromRequest(Request $request)
     {
-        $this->setFromArray($request->toArray());
+        $this->setFromArray($request->all());
     }
 
     /**
