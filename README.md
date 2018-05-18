@@ -20,7 +20,9 @@
 ```bash
 composer require lisennk/laravel-slack-events-api
 ```
-**2)** Open `config/app.php` and add `\Lisennk\LaravelSlackEvents\SlackEventsServiceProvider::class` to the `providers[]` array.
+**2)** If you're using Laravel version 5.5 or higher, the SlackEventsServiceProvider will be automatically discovered. Get started fast!
+
+**3)** If you're using a version of Laravel lower than 5.5, you'll still have to register the service provider manually. Open `config/app.php` and add `\Lisennk\LaravelSlackEvents\SlackEventsServiceProvider::class` to the `providers[]` array.
 
 *For example:*
 ```php
@@ -36,16 +38,21 @@ composer require lisennk/laravel-slack-events-api
 
 // ...
 ```
-If you are using Laravel 5.3, in this file you will find a comment with text like `/* Package Service Providers... */`, which can help you to find the right place.
+If you are using Laravel 5.3 or higher, you will find a comment in `config/app.php` with text like `/* Package Service Providers... */`, which can help you find the right place.
 
-**3)** Publish the config file
+**4)** Publish the config file
 ```bash
 php artisan vendor:publish
+
 ```
 
-**4)** Open in browser [api.slack.com](https://api.slack.com) site, go to "[My Apps](https://api.slack.com/apps)" page and then go to your app control panel. You will need to configure a few things here in the next 2 steps.
+Choose the option for the Service Provider, or find `slack-events` in the `Tag:` list at the bottom.
 
-**5)** Go to the "App Credentials" page, scroll down and copy "Verification Token".
+Next we'll configure some settings to use the [Slack API](https://api.slack.com).
+
+**5)** Open the [Slack Apps](https://api.slack.com/apps) page and either create a new App, or open an existing app you're modifying to use with Slack-Events.
+
+**6)** Once you're on the *Basic Information* page for your selected App, scroll down to the "App Credentials" section, and copy the *Verification Token* at the bottom.
 
 <img src="https://cloud.githubusercontent.com/assets/8103985/17901937/ebdbdb3e-696d-11e6-96b4-b0794d74ed9a.png" alt="verification_token" style="height: 250px; width: auto;">
 
