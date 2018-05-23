@@ -23,7 +23,7 @@ class SlackEventsServiceProvider extends ServiceProvider
         $source = dirname(__DIR__).'/config/slackEvents.php';
 
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
-            $this->publishes([$source => config_path('slackEvents.php')]);
+            $this->publishes([$source => config_path('slackEvents.php')], 'slack-events');
         } elseif ($this->app instanceof LumenApplication) {
             $this->app->configure('slackEvents');
         }
