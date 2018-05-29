@@ -7,7 +7,7 @@
 
 **:link: Reasons to use this package for the [Slack Events API](https://api.slack.com/events-api):**
 * Based on native Laravel Events
-* Supports all Slack Event types
+* Supports all Slack Event types (including events for new Workspace Apps!)
 * Supports token validation
 * Supports URL verification and "challenge" requests
 * PSR compatible code
@@ -50,9 +50,14 @@ Choose the option for the Service Provider, or find `slack-events` in the `Tag:`
 
 Next we'll configure some settings to use the [Slack API](https://api.slack.com).
 
-**5)** Open the [Slack Apps](https://api.slack.com/apps) page and either create a new App, or open an existing app you're modifying to use with Slack-Events.
+**5)** Create an App or Open an Existing One
+If you want to work with Slack's new _Workspace Apps_, read over the information in the [Developer Preview](https://api.slack.com/workspace-apps-preview) for Workspace Apps, and create a new _workspace token_ App to get started.
 
-**6)** Once you're on the *Basic Information* page for your selected App, scroll down to the "App Credentials" section, and copy the *Verification Token* at the bottom.
+If you're not using a Workspace App, open the [Slack Apps](https://api.slack.com/apps) page and create a new _user token_ App.
+
+If you want to modify an existing app to use with Slack-Events, you can find both _Workspace Token_ Apps and _User Token_ Apps on the [Your Apps](https://api.slack.com/apps) page.
+
+**6)** Once you've created or opened your app you should see the *Basic Information* page. Scroll down to the "App Credentials" section, and copy the *Verification Token* at the bottom.
 
 <img src="https://cloud.githubusercontent.com/assets/8103985/17901937/ebdbdb3e-696d-11e6-96b4-b0794d74ed9a.png" alt="verification_token" style="height: 250px; width: auto;">
 
@@ -61,7 +66,7 @@ Open `.env` and paste your Verification Token under the `'SLACK_EVENT_TOKEN'` ke
 SLACK_EVENT_TOKEN=your-token
 ```
 
-**6)** Now open the "Event Subscriptions" page. Here you must enable events, add events you wish to listen for and set **Request URL**. Request URL is the `'route'` key in your `config/slackEvents.php` file:
+**7)** Now open the "Event Subscriptions" page. Here you must enable events, add events you wish to listen for and set **Request URL**. Request URL is the `'route'` key in your `config/slackEvents.php` file:
 ```php
 return [
     /*

@@ -45,7 +45,12 @@ class SlackEvent
     /**
      * @var array An array of string-based User IDs.
      */
-    public $authed_users;
+    public $authed_users = [];
+
+    /**
+     * @var array An array of string-based Team/Workspace IDs.
+     */
+    public $authed_teams = [];
 
     /**
      * Sets parameters from request
@@ -64,10 +69,17 @@ class SlackEvent
      */
     public function setFromArray(array $data)
     {
+        if (isset($data['authed_users'])) {
+            $this->authed_users = $data['authed_users'];
+        }
+
+        if (isset($data['authed_teams'])) {
+            $this->authed_teams = $data['authed_teams'];
+        }
+
         $this->api_app_id = $data['api_app_id'];
         $this->event = $data['event'];
         $this->data = $this->event;
-        $this->authed_users = $data['authed_users'];
         $this->team_id = $data['team_id'];
         $this->token = $data['token'];
         $this->type = $data['type'];
