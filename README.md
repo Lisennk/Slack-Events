@@ -213,6 +213,7 @@ protected $listen = [
 |im_created|\Lisennk\LaravelSlackEvents\Events\ImCreated|
 |im_history_changed|\Lisennk\LaravelSlackEvents\Events\ImHistoryChanged|
 |im_open|\Lisennk\LaravelSlackEvents\Events\ImOpen|
+|link_shared|\Lisennk\LaravelSlackEvents\Events\LinkShared|
 |message|\Lisennk\LaravelSlackEvents\Events\Message|
 |message.channels|\Lisennk\LaravelSlackEvents\Events\MessageChannels|
 |message.groups|\Lisennk\LaravelSlackEvents\Events\MessageGroups|
