@@ -1,6 +1,6 @@
 {
     "name": "lisennk/laravel-slack-events-api",
-    "description": "Slack Events API for Laravel 5",
+    "description": "Slack Events API for Laravel 5 & 6",
     "keywords": ["slack", "laravel", "api", "slack api", "slack events api", "events", "slack events"],
     "require": {
         "illuminate/http": "^5.4||^6.2",
@@ -8,8 +8,8 @@
         "illuminate/routing": "^5.4||^6.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
-        "orchestra/testbench": "^4.0"
+        "phpunit/phpunit": "^4.7||^5.0||^8.0",
+        "orchestra/testbench": "~3.0||^4.0"
     },
     "autoload": {
         "psr-4": {
