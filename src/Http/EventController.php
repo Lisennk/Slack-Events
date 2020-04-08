@@ -34,7 +34,7 @@ class EventController extends Controller
     {
         $event = $events->make($request->input('event.type'));
         $event->setFromRequest($request);
-        Event::fire($event);
+        event(new $event);
 
         return response('Event received', 200);
     }

@@ -2,16 +2,18 @@
 
 namespace Lisennk\LaravelSlackEvents\Tests;
 
-use Illuminate\Http\Response;
-use Lisennk\LaravelSlackEvents\EventCreator;
-use Orchestra\Testbench\TestCase;
-use Lisennk\LaravelSlackEvents\Tests\Traits\EventRequestDataTrait;
-use \Lisennk\LaravelSlackEvents\Http\EventController;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Event;
+use Lisennk\LaravelSlackEvents\EventCreator;
+use Lisennk\LaravelSlackEvents\Events\ReactionAdded;
+use Lisennk\LaravelSlackEvents\Http\EventController;
+use Lisennk\LaravelSlackEvents\Tests\Traits\EventRequestDataTrait;
+use Orchestra\Testbench\TestCase;
 
 /**
-* Tests EventController
-*/
+ * Tests EventController
+ */
 class ControllerTest extends TestCase
 {
     use EventRequestDataTrait;
@@ -21,6 +23,8 @@ class ControllerTest extends TestCase
      */
     public function testFire()
     {
+        Event::fake();
+
         $controller = new EventController();
 
         $request = new Request;
@@ -31,5 +35,7 @@ class ControllerTest extends TestCase
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->status());
+
+        Event::assertDispatched(ReactionAdded::class);
     }
 }
