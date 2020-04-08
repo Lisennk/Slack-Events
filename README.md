@@ -3,7 +3,7 @@
 [![License](https://poser.pugx.org/lisennk/laravel-slack-events-api/license)](https://packagist.org/packages/lisennk/laravel-slack-events-api)
 [![Build Status](https://travis-ci.org/Lisennk/Slack-Events.svg?branch=1.0.0)](https://travis-ci.org/Lisennk/Slack-Events)
 
-*Work with Slack Events API as easily as with native Laravel 5.1+ events and event listeners.*
+*Work with Slack Events API as easily as with native Laravel 7 events and event listeners.*
 
 **:link: Reasons to use this package for the [Slack Events API](https://api.slack.com/events-api):**
 * Based on native Laravel Events
