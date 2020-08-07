@@ -34,6 +34,8 @@ use Lisennk\LaravelSlackEvents\Events\ImCreated;
 use Lisennk\LaravelSlackEvents\Events\ImHistoryChanged;
 use Lisennk\LaravelSlackEvents\Events\ImOpen;
 use Lisennk\LaravelSlackEvents\Events\LinkShared;
+use Lisennk\LaravelSlackEvents\Events\MemberJoinedChannel;
+use Lisennk\LaravelSlackEvents\Events\MemberLeftChannel;
 use Lisennk\LaravelSlackEvents\Events\Message;
 use Lisennk\LaravelSlackEvents\Events\MessageChannels;
 use Lisennk\LaravelSlackEvents\Events\MessageGroups;
@@ -97,6 +99,8 @@ class EventCreator
         'im_history_changed' => ImHistoryChanged::class,
         'im_open' => ImOpen::class,
         'link_shared' => LinkShared::class,
+        'member_joined_channel' => MemberJoinedChannel::class,
+        'member_left_channel' => MemberLeftChannel::class,
         'message' => Message::class,
         'message.channels' => MessageChannels::class,
         'message.groups' => MessageGroups::class,
