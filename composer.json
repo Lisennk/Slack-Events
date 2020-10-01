@@ -1,6 +1,6 @@
 {
     "name": "lisennk/laravel-slack-events-api",
-    "description": "Slack Events API for Laravel 5, 6 and 7",
+    "description": "Slack Events API for Laravel 5, 6, 7 and 8",
     "keywords": ["slack", "laravel", "api", "slack api", "slack events api", "events", "slack events"],
     "require": {
         "illuminate/http": "^5.4||^6.2||^7.2||^8.0",
