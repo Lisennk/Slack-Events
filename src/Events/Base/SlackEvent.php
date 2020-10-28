@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
  * Slack Events API event
  * Fields the same as in Slack reuqest
  * @see https://api.slack.com/events-api#receiving_events
- * @package Lisennk\LaravelSlackEvents\Events
+ * @package Lisennk\LaravelSlackEvents\Events\Base
  */
 class SlackEvent
 {
