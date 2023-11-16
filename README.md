@@ -18,7 +18,7 @@
 ## :earth_americas: Installation
 **1)** Require the package with Composer
 ```bash
-composer require lisennk/laravel-slack-events-api
+composer require akdf/laravel-slack-events-api
 ```
 **2)** If you're using Laravel version 5.5 or higher, the SlackEventsServiceProvider will be automatically discovered. Get started fast!
 
