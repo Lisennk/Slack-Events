@@ -2,6 +2,7 @@
 
 namespace Lisennk\LaravelSlackEvents;
 
+use Lisennk\LaravelSlackEvents\Events\AppUninstalled;
 use Lisennk\LaravelSlackEvents\Events\Base\SlackEvent;
 use Lisennk\LaravelSlackEvents\Events\ChannelArchive;
 use Lisennk\LaravelSlackEvents\Events\ChannelCreated;
@@ -117,6 +118,7 @@ class EventCreator
         'team_rename' => TeamRename::class,
         'url_verification' => UrlVerification::class,
         'user_change' => UserChange::class,
+        'app_uninstalled' =>AppUninstalled::class,
     ];
 
     /**
