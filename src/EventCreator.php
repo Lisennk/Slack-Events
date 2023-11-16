@@ -53,6 +53,7 @@ use Lisennk\LaravelSlackEvents\Events\SubteamUpdated;
 use Lisennk\LaravelSlackEvents\Events\TeamDomainChange;
 use Lisennk\LaravelSlackEvents\Events\TeamJoin;
 use Lisennk\LaravelSlackEvents\Events\TeamRename;
+use Lisennk\LaravelSlackEvents\Events\TokensRevoked;
 use Lisennk\LaravelSlackEvents\Events\UrlVerification;
 use Lisennk\LaravelSlackEvents\Events\UserChange;
 
@@ -119,6 +120,7 @@ class EventCreator
         'url_verification' => UrlVerification::class,
         'user_change' => UserChange::class,
         'app_uninstalled' =>AppUninstalled::class,
+        'tokens_revoked' =>TokensRevoked::class,
     ];
 
     /**
